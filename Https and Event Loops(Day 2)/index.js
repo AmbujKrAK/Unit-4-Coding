@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const books = require('./data')
+const books = require('./data');
 
 app.get("/home" ,function (request,response){
     response.send("Hello");
