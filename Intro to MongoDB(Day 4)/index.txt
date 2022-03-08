@@ -1,0 +1,314 @@
+// -------MongoDb ------ 
+
+> show dbs
+
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+> use assignment 
+switched to db assignment
+
+> db assignment
+
+> db.createCollection("users")
+{ "ok" : 1 }
+
+> show collections 
+users
+
+> db.users.insert({ "first_name": "Ambuj" })
+WriteResult({ "nInserted": 1 })
+
+> db.users.insertMany([{"last_name":"Kumar","email":"ambuj02db@gamil.com","gender":"male","ip_address":0, "age":25}])                  
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278c36adca3636b353820a")
+        ]
+}
+
+> db.users.find()
+{ "_id" : ObjectId("62278bd7adca3636b3538209"), "first_name" : "Ambuj" }
+{ "_id" : ObjectId("62278c36adca3636b353820a"), "last_name" : "Kumar", "email" : "ambuj02db@gamil.com", "gender" : "male", "ip_address" : 0, "age" : 25 }
+
+> db.users.find().pretty()
+{ "_id" : ObjectId("62278bd7adca3636b3538209"), "first_name" : "Ambuj" }
+{
+        "_id" : ObjectId("62278c36adca3636b353820a"),
+        "last_name" : "Kumar",
+        "email" : "ambuj02db@gamil.com",
+        "gender" : "male",
+        "ip_address" : 0,
+        "age" : 25
+}
+
+>  db.users.insertMany([{ "first_name":"Ankit" , "last_name":"Kumar" , "email":"ankit02dbz@gamil.com" , "gender":"male" , "ip_address":1 , "age":25 }])
+
+> db.users.find({}).pretty()
+{ "_id" : ObjectId("62278bd7adca3636b3538209"), "first_name" : "Ambuj" }
+{
+        "_id" : ObjectId("62278c36adca3636b353820a"),
+        "last_name" : "Kumar",
+        "email" : "ambuj02db@gamil.com",
+        "gender" : "male",
+        "ip_address" : 0,
+        "age" : 25
+}
+{
+        "_id" : ObjectId("62278cbfadca3636b353820b"),
+        "first_name" : "Ankit",
+        "last_name" : "Kumar",
+        "email" : "ankit02dbz@gamil.com",
+        "gender" : "male",
+        "ip_address" : 1,
+        "age" : 25
+}
+
+> db.users.insertMany([{ "first_name":"three" , "last_name":"Kumar" , "email":"03@gamil.com" , "gender":"male" , "ip_address":3 , "age":25 }])          
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278d3aadca3636b353820c")
+        ]
+}
+
+> db.users.insertMany([{ "first_name":"four" , "last_name":"Kumar" , "email":"04@gamil.com" , "gender":"female" , "ip_address":4 , "age":24 }])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278d53adca3636b353820d")
+        ]
+}
+
+> db.users.insertMany([{ "first_name":"five" , "last_name":"Kumar" , "email":"05@gamil.com" , "gender":"female" , "ip_address":5 , "age":25 }])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278d63adca3636b353820e")
+        ]
+}
+
+> db.users.insertMany([{ "first_name":"six" , "last_name":"Kumar" , "email":"06@gamil.com" , "gender":"male" , "ip_address":6 , "age":26 }])   
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278d79adca3636b353820f")
+        ]
+}
+
+> db.users.insertMany([{ "first_name":"seven" , "last_name":"Kumar" , "email":"07@gamil.com" , "gender":"transgender" , "ip_address":7 , "age":27 }])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278db5adca3636b3538210")
+        ]
+}
+
+> db.users.insertMany([{ "first_name":"eight" , "last_name":"Kumar" , "email":"08@gamil.com" , "gender":"non-binary" , "ip_address":8 , "age":28 }]) 
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278dd2adca3636b3538211")
+        ]
+}
+
+> db.users.insertMany([{ "first_name":"nine" , "last_name":"Kumar" , "email":"09@gamil.com" , "gender":"agender" , "ip_address":9 , "age":29 }])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278dedadca3636b3538212")
+        ]
+}
+
+> db.users.insertMany([{ "first_name":"ten" , "last_name":"Kumar" , "email":"10@gamil.com" , "gender":"pangender" , "ip_address":10 , "age":20 }])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62278e04adca3636b3538213")
+        ]
+}
+
+> db.users.find({}).pretty()
+{ "_id" : ObjectId("62278bd7adca3636b3538209"), "first_name" : "Ambuj" }
+{
+        "_id" : ObjectId("62278c36adca3636b353820a"),
+        "last_name" : "Kumar",
+        "email" : "ambuj02db@gamil.com",   
+        "gender" : "male",
+        "ip_address" : 0,
+        "age" : 25
+}
+{
+        "_id" : ObjectId("62278cbfadca3636b353820b"),
+        "first_name" : "Ankit",
+        "last_name" : "Kumar",
+        "email" : "ankit02dbz@gamil.com", 
+        "gender" : "male",
+        "ip_address" : 1,
+        "age" : 25
+}
+{
+        "_id" : ObjectId("62278d3aadca3636b353820c"),
+        "first_name" : "three",
+        "last_name" : "Kumar",
+        "email" : "03@gamil.com",
+        "gender" : "male",
+        "ip_address" : 3,
+        "age" : 25
+}
+{
+        "_id" : ObjectId("62278d53adca3636b353820d"),
+        "first_name" : "four",
+        "last_name" : "Kumar",
+        "email" : "04@gamil.com",
+        "gender" : "female",
+        "ip_address" : 4,
+        "age" : 24
+}
+{
+        "_id" : ObjectId("62278d63adca3636b353820e"),
+        "first_name" : "five",
+        "last_name" : "Kumar",
+        "email" : "05@gamil.com",
+        "gender" : "female",
+        "ip_address" : 5,
+        "age" : 25
+}
+{
+        "_id" : ObjectId("62278d79adca3636b353820f"),
+        "first_name" : "six",
+        "last_name" : "Kumar",
+        "email" : "06@gamil.com",
+        "gender" : "male",
+        "ip_address" : 6,
+        "age" : 26
+}
+{
+        "_id" : ObjectId("62278db5adca3636b3538210"),
+        "first_name" : "seven",
+        "last_name" : "Kumar",
+        "email" : "07@gamil.com",
+        "gender" : "transgender",
+        "ip_address" : 7,
+        "age" : 27
+}
+{
+        "_id" : ObjectId("62278dd2adca3636b3538211"),
+        "first_name" : "eight",
+        "last_name" : "Kumar",
+        "email" : "08@gamil.com",
+        "gender" : "non-binary",
+        "ip_address" : 8,
+        "age" : 28
+}
+{
+        "_id" : ObjectId("62278dedadca3636b3538212"),
+        "first_name" : "nine",
+        "last_name" : "Kumar",
+        "email" : "09@gamil.com",
+        "gender" : "agender",
+        "ip_address" : 9,
+        "age" : 29
+}
+{
+        "_id" : ObjectId("62278e04adca3636b3538213"),
+        "first_name" : "ten",
+        "last_name" : "Kumar",
+        "email" : "10@gamil.com",
+        "gender" : "pangender",
+        "ip_address" : 10,
+        "age" : 20
+}
+
+> db.users.find({"first_name":"Ambuj"})
+{ "_id" : ObjectId("62278bd7adca3636b3538209"), "first_name" : "Ambuj" }
+
+> db.users.findOne({"last_name":"Kumar"})  
+{
+        "_id" : ObjectId("62278c36adca3636b353820a"),
+        "last_name" : "Kumar",
+        "email" : "ambuj02db@gamil.com",
+        "gender" : "male",
+        "ip_address" : 0,
+        "age" : 25
+}
+
+> db.users.update({"_id":ObjectId("62278c36adca3636b353820a")},{$set:{"last_name":"End"}}) 
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+> db.users.findOne({"_id":ObjectId("62278c36adca3636b353820a")})
+{
+        "_id" : ObjectId("62278c36adca3636b353820a"),
+        "last_name" : "End",
+        "email" : "ambuj02db@gamil.com",
+        "gender" : "male",
+        "ip_address" : 0,
+        "age" : 25
+}
+
+> db.users.find({"last_name":"Kumar"})   
+{ "_id" : ObjectId("62278cbfadca3636b353820b"), "first_name" : "Ankit", "last_name" : "Kumar", "email" : "ankit02dbz@gamil.com", "gender" : "male", "ip_address" : 1, "age" : 25 }
+{ "_id" : ObjectId("62278d3aadca3636b353820c"), "first_name" : "three", "last_name" : "Kumar", "email" : "03@gamil.com", "gender" : "male", "ip_address" : 3, "age" : 25 }
+{ "_id" : ObjectId("62278d53adca3636b353820d"), "first_name" : "four", "last_name" : "Kumar", "email" : "04@gamil.com", "gender" : "female", "ip_address" : 4, "age" : 24 }
+{ "_id" : ObjectId("62278d63adca3636b353820e"), "first_name" : "five", "last_name" : "Kumar", "email" : "05@gamil.com", "gender" : "female", "ip_address" : 5, "age" : 25 }
+{ "_id" : ObjectId("62278d79adca3636b353820f"), "first_name" : "six", "last_name" : "Kumar", "email" : "06@gamil.com", "gender" : "male", "ip_address" : 6, "age" : 26 }
+{ "_id" : ObjectId("62278db5adca3636b3538210"), "first_name" : "seven", "last_name" : "Kumar", "email" : "07@gamil.com", "gender" : "transgender", "ip_address" : 7, "age" : 27 }
+{ "_id" : ObjectId("62278dd2adca3636b3538211"), "first_name" : "eight", "last_name" : "Kumar", "email" : "08@gamil.com", "gender" : "non-binary", "ip_address" : 8, "age" : 28 }
+{ "_id" : ObjectId("62278dedadca3636b3538212"), "first_name" : "nine", "last_name" : "Kumar", "email" : "09@gamil.com", "gender" : "agender", "ip_address" : 9, "age" : 29 }
+{ "_id" : ObjectId("62278e04adca3636b3538213"), "first_name" : "ten", "last_name" : "Kumar", "email" : "10@gamil.com", "gender" : "pangender", "ip_address" : 10, "age" : 20 }
+
+> db.users.updateMany({"last_name":"Kumar"},{$set:{"Religion":"Hindu"}})
+{ "acknowledged" : true, "matchedCount" : 9, "modifiedCount" : 9 }
+
+> db.users.find({"last_name":"Kumar"})
+{ "_id" : ObjectId("62278cbfadca3636b353820b"), "first_name" : "Ankit", "last_name" : "Kumar", "email" : "ankit02dbz@gamil.com", "gender" : "male", "ip_address" : 1, "age" : 25, "Religion" : "Hindu" } 
+{ "_id" : ObjectId("62278d3aadca3636b353820c"), "first_name" : "three", "last_name" : "Kumar", "email" : "03@gamil.com", "gender" : "male", "ip_address" : 3, "age" : 25, "Religion" : "Hindu" }
+{ "_id" : ObjectId("62278d53adca3636b353820d"), "first_name" : "four", "last_name" : "Kumar", "email" : "04@gamil.com", "gender" : "female", "ip_address" : 4, "age" : 24, "Religion" : "Hindu" }        
+{ "_id" : ObjectId("62278d63adca3636b353820e"), "first_name" : "five", "last_name" : "Kumar", "email" : "05@gamil.com", "gender" : "female", "ip_address" : 5, "age" : 25, "Religion" : "Hindu" }        
+{ "_id" : ObjectId("62278d79adca3636b353820f"), "first_name" : "six", "last_name" : "Kumar", "email" : "06@gamil.com", "gender" : "male", "ip_address" : 6, "age" : 26, "Religion" : "Hindu" }
+{ "_id" : ObjectId("62278db5adca3636b3538210"), "first_name" : "seven", "last_name" : "Kumar", "email" : "07@gamil.com", "gender" : "transgender", "ip_address" : 7, "age" : 27, "Religion" : "Hindu" }  
+{ "_id" : ObjectId("62278dd2adca3636b3538211"), "first_name" : "eight", "last_name" : "Kumar", "email" : "08@gamil.com", "gender" : "non-binary", "ip_address" : 8, "age" : 28, "Religion" : "Hindu" }   
+{ "_id" : ObjectId("62278dedadca3636b3538212"), "first_name" : "nine", "last_name" : "Kumar", "email" : "09@gamil.com", "gender" : "agender", "ip_address" : 9, "age" : 29, "Religion" : "Hindu" }       
+{ "_id" : ObjectId("62278e04adca3636b3538213"), "first_name" : "ten", "last_name" : "Kumar", "email" : "10@gamil.com", "gender" : "pangender", "ip_address" : 10, "age" : 20, "Religion" : "Hindu" }
+
+> db.users.find({})
+{ "_id" : ObjectId("62278bd7adca3636b3538209"), "first_name" : "Ambuj" }
+{ "_id" : ObjectId("62278c36adca3636b353820a"), "last_name" : "End", "email" : "ambuj02db@gamil.com", "gender" : "male", "ip_address" : 0, "age" : 25 }
+{ "_id" : ObjectId("62278cbfadca3636b353820b"), "first_name" : "Ankit", "last_name" : "Kumar", "email" : "ankit02dbz@gamil.com", "gender" : "male", "ip_address" : 1, "age" : 25, "Religion" : "Hindu" }
+{ "_id" : ObjectId("62278d3aadca3636b353820c"), "first_name" : "three", "last_name" : "Kumar", "email" : "03@gamil.com", "gender" : "male", "ip_address" : 3, "age" : 25, "Religion" : "Hindu" }        
+{ "_id" : ObjectId("62278d53adca3636b353820d"), "first_name" : "four", "last_name" : "Kumar", "email" : "04@gamil.com", "gender" : "female", "ip_address" : 4, "age" : 24, "Religion" : "Hindu" }       
+{ "_id" : ObjectId("62278d63adca3636b353820e"), "first_name" : "five", "last_name" : "Kumar", "email" : "05@gamil.com", "gender" : "female", "ip_address" : 5, "age" : 25, "Religion" : "Hindu" }       
+{ "_id" : ObjectId("62278d79adca3636b353820f"), "first_name" : "six", "last_name" : "Kumar", "email" : "06@gamil.com", "gender" : "male", "ip_address" : 6, "age" : 26, "Religion" : "Hindu" }
+{ "_id" : ObjectId("62278db5adca3636b3538210"), "first_name" : "seven", "last_name" : "Kumar", "email" : "07@gamil.com", "gender" : "transgender", "ip_address" : 7, "age" : 27, "Religion" : "Hindu" } 
+{ "_id" : ObjectId("62278dd2adca3636b3538211"), "first_name" : "eight", "last_name" : "Kumar", "email" : "08@gamil.com", "gender" : "non-binary", "ip_address" : 8, "age" : 28, "Religion" : "Hindu" }  
+{ "_id" : ObjectId("62278dedadca3636b3538212"), "first_name" : "nine", "last_name" : "Kumar", "email" : "09@gamil.com", "gender" : "agender", "ip_address" : 9, "age" : 29, "Religion" : "Hindu" }      
+{ "_id" : ObjectId("62278e04adca3636b3538213"), "first_name" : "ten", "last_name" : "Kumar", "email" : "10@gamil.com", "gender" : "pangender", "ip_address" : 10, "age" : 20, "Religion" : "Hindu" }    
+> db.users.remove({"_id":ObjectId("62278bd7adca3636b3538209")})
+WriteResult({ "nRemoved" : 1 })
+
+> db.users.find({})
+{ "_id" : ObjectId("62278c36adca3636b353820a"), "last_name" : "End", "email" : "ambuj02db@gamil.com", "gender" : "male", "ip_address" : 0, "age" : 25 }
+{ "_id" : ObjectId("62278cbfadca3636b353820b"), "first_name" : "Ankit", "last_name" : "Kumar", "email" : "ankit02dbz@gamil.com", "gender" : "male", "ip_address" : 1, "age" : 25, "Religion" : "Hindu" }
+{ "_id" : ObjectId("62278d3aadca3636b353820c"), "first_name" : "three", "last_name" : "Kumar", "email" : "03@gamil.com", "gender" : "male", "ip_address" : 3, "age" : 25, "Religion" : "Hindu" }
+{ "_id" : ObjectId("62278d53adca3636b353820d"), "first_name" : "four", "last_name" : "Kumar", "email" : "04@gamil.com", "gender" : "female", "ip_address" : 4, "age" : 24, "Religion" : "Hindu" }        
+{ "_id" : ObjectId("62278d63adca3636b353820e"), "first_name" : "five", "last_name" : "Kumar", "email" : "05@gamil.com", "gender" : "female", "ip_address" : 5, "age" : 25, "Religion" : "Hindu" }        
+{ "_id" : ObjectId("62278d79adca3636b353820f"), "first_name" : "six", "last_name" : "Kumar", "email" : "06@gamil.com", "gender" : "male", "ip_address" : 6, "age" : 26, "Religion" : "Hindu" }
+{ "_id" : ObjectId("62278db5adca3636b3538210"), "first_name" : "seven", "last_name" : "Kumar", "email" : "07@gamil.com", "gender" : "transgender", "ip_address" : 7, "age" : 27, "Religion" : "Hindu" }  
+{ "_id" : ObjectId("62278dd2adca3636b3538211"), "first_name" : "eight", "last_name" : "Kumar", "email" : "08@gamil.com", "gender" : "non-binary", "ip_address" : 8, "age" : 28, "Religion" : "Hindu" }   
+{ "_id" : ObjectId("62278dedadca3636b3538212"), "first_name" : "nine", "last_name" : "Kumar", "email" : "09@gamil.com", "gender" : "agender", "ip_address" : 9, "age" : 29, "Religion" : "Hindu" }       
+{ "_id" : ObjectId("62278e04adca3636b3538213"), "first_name" : "ten", "last_name" : "Kumar", "email" : "10@gamil.com", "gender" : "pangender", "ip_address" : 10, "age" : 20, "Religion" : "Hindu" }
+
+> db.users.remove({"last_name":"Kumar"}) 
+WriteResult({ "nRemoved" : 9 })
+
+> db.user.find({})
+ // Nothing //
+
+> db.dropDatabase()
+{ "ok" : 1 }     
+  
+> show dbs     
+admin   0.000GB
+config  0.000GB
+local   0.000GB
