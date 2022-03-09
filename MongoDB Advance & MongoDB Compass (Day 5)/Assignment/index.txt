@@ -1,0 +1,394 @@
+> db.users.find({"movie_name":{$in : ["Dead Man Walking"]}}).pretty()
+{
+        "_id" : ObjectId("62283dbf586b8b7862028fd6"),
+        "id" : 67,
+        "movie_name" : "Dead Man Walking",
+        "movie_genre" : "Crime|Drama",
+        "production_year" : 2002,
+        "budget" : 18446
+}
+
+> db.users.find({"movie_name":{$in : ["Dead Man Walking"]}},{"movie_name":1,"movie_genre":1,"_id":0}).pretty()
+{ "movie_name" : "Dead Man Walking", "movie_genre" : "Crime|Drama" }
+
+> db.users.find({"movie_name":{$nin : ["Dead Man Walking"]}},{"movie_name":1,"movie_genre":1,"_id":0}).pretty()
+{ "movie_name" : "Of Human Bondage", "movie_genre" : "Drama" }
+{ "movie_name" : "Rum Diary, The", "movie_genre" : "Comedy|Drama|Thriller" }
+{ "movie_name" : "Just Around the Corner", "movie_genre" : "Comedy|Musical" }
+{
+        "movie_name" : "Moebius Redux: A Life in Pictures",
+        "movie_genre" : "Documentary"
+}
+{ "movie_name" : "Night and the City", "movie_genre" : "Crime|Drama" }
+{
+        "movie_name" : "Across the Universe",
+        "movie_genre" : "Drama|Fantasy|Musical|Romance"
+}
+{
+        "movie_name" : "Angry Video Game Nerd: The Movie",
+        "movie_genre" : "Adventure|Comedy|Sci-Fi"
+}
+{ "movie_name" : "Into the Storm", "movie_genre" : "Drama|War" }
+{
+        "movie_name" : "Dragon Gate Inn (Dragon Inn) (Long men kezhan)",
+        "movie_genre" : "Action|Adventure"
+}
+{ "movie_name" : "2 Guns", "movie_genre" : "Action|Comedy|Crime" }
+{
+        "movie_name" : "Olsen Gang on the Track, The (Olsen-banden på sporet)",
+        "movie_genre" : "Comedy|Crime"
+}
+{ "movie_name" : "Purge, The", "movie_genre" : "Crime|Horror|Thriller" }
+{ "movie_name" : "Gumby: The Movie", "movie_genre" : "Animation|Children" }
+{ "movie_name" : "Troop Beverly Hills", "movie_genre" : "Comedy" }
+{
+        "movie_name" : "Knights of the Round Table",
+        "movie_genre" : "Adventure|Drama"
+}
+{
+        "movie_name" : "Highlander II: The Quickening",
+        "movie_genre" : "Action|Sci-Fi"
+}
+{ "movie_name" : "In Name Only", "movie_genre" : "Drama|Romance" }
+{
+        "movie_name" : "50 Worst Movies Ever Made, The",
+        "movie_genre" : "Documentary"
+}
+{ "movie_name" : "One Day", "movie_genre" : "Drama|Romance" }
+{ "movie_name" : "Death Becomes Her", "movie_genre" : "Comedy|Fantasy" }
+Type "it" for more
+
+> db.users.find({"budget":{$gte : 10000}},{"movie_name":1,"movie_genre":1,"_id":0})         
+{ "movie_name" : "Of Human Bondage", "movie_genre" : "Drama" }
+{ "movie_name" : "Rum Diary, The", "movie_genre" : "Comedy|Drama|Thriller" }
+{ "movie_name" : "Just Around the Corner", "movie_genre" : "Comedy|Musical" }
+{ "movie_name" : "Moebius Redux: A Life in Pictures", "movie_genre" : "Documentary" }
+{ "movie_name" : "Across the Universe", "movie_genre" : "Drama|Fantasy|Musical|Romance" }
+{ "movie_name" : "Angry Video Game Nerd: The Movie", "movie_genre" : "Adventure|Comedy|Sci-Fi" }
+{ "movie_name" : "Into the Storm", "movie_genre" : "Drama|War" }
+{ "movie_name" : "Dragon Gate Inn (Dragon Inn) (Long men kezhan)", "movie_genre" : "Action|Adventure" }
+{ "movie_name" : "2 Guns", "movie_genre" : "Action|Comedy|Crime" }
+{ "movie_name" : "Olsen Gang on the Track, The (Olsen-banden på sporet)", "movie_genre" : "Comedy|Crime" }
+{ "movie_name" : "Gumby: The Movie", "movie_genre" : "Animation|Children" }
+{ "movie_name" : "Knights of the Round Table", "movie_genre" : "Adventure|Drama" }
+{ "movie_name" : "Highlander II: The Quickening", "movie_genre" : "Action|Sci-Fi" }
+{ "movie_name" : "In Name Only", "movie_genre" : "Drama|Romance" }
+{ "movie_name" : "50 Worst Movies Ever Made, The", "movie_genre" : "Documentary" }
+{ "movie_name" : "One Day", "movie_genre" : "Drama|Romance" }
+{ "movie_name" : "Death Becomes Her", "movie_genre" : "Comedy|Fantasy" }
+{ "movie_name" : "Boulevard", "movie_genre" : "Crime|Drama" }
+{ "movie_name" : "Crime Lords of Tokyo", "movie_genre" : "Documentary" }
+{ "movie_name" : "Walker", "movie_genre" : "Adventure|Drama|War|Western" }
+Type "it" for more
+
+> db.users.find({"budget":{$lte : 15000}},{"movie_name":1,"movie_genre":1,"_id":0})
+{ "movie_name" : "Of Human Bondage", "movie_genre" : "Drama" }
+{ "movie_name" : "Moebius Redux: A Life in Pictures", "movie_genre" : "Documentary" }
+{ "movie_name" : "Night and the City", "movie_genre" : "Crime|Drama" }
+{ "movie_name" : "Across the Universe", "movie_genre" : "Drama|Fantasy|Musical|Romance" }
+{ "movie_name" : "Angry Video Game Nerd: The Movie", "movie_genre" : "Adventure|Comedy|Sci-Fi" }
+{ "movie_name" : "Into the Storm", "movie_genre" : "Drama|War" }
+{ "movie_name" : "Purge, The", "movie_genre" : "Crime|Horror|Thriller" }
+{ "movie_name" : "Gumby: The Movie", "movie_genre" : "Animation|Children" }
+{ "movie_name" : "Troop Beverly Hills", "movie_genre" : "Comedy" }
+{ "movie_name" : "Boulevard", "movie_genre" : "Crime|Drama" }
+{ "movie_name" : "Walker", "movie_genre" : "Adventure|Drama|War|Western" }
+{ "movie_name" : "Home Alone 2: Lost in New York", "movie_genre" : "Children|Comedy" }
+{ "movie_name" : "Presence, The", "movie_genre" : "Drama|Horror|Thriller" }
+{ "movie_name" : "It's Such a Beautiful Day", "movie_genre" : "Animation|Comedy|Drama|Fantasy|Sci-Fi" }
+{ "movie_name" : "633 Squadron", "movie_genre" : "Drama|War" }
+{ "movie_name" : "Passion Fish", "movie_genre" : "Drama" }
+{ "movie_name" : "Nazis: A Warning from History, The", "movie_genre" : "Documentary|War" }
+{ "movie_name" : "Transit", "movie_genre" : "Crime|Drama|Thriller" }
+{ "movie_name" : "No Way Back", "movie_genre" : "Action|Crime|Drama|Thriller" }
+{ "movie_name" : "Who the F**K Is Arthur Fogel", "movie_genre" : "Documentary" }
+Type "it" for more
+
+// below are the result with budget ------
+
+> db.users.find({"budget":{$lte : 15000}},{"movie_name":1,"movie_genre":1,"_id":0,"budget":1})
+{ "movie_name" : "Of Human Bondage", "movie_genre" : "Drama", "budget" : 12908 }
+{ "movie_name" : "Moebius Redux: A Life in Pictures", "movie_genre" : "Documentary", "budget" : 13029 }
+{ "movie_name" : "Night and the City", "movie_genre" : "Crime|Drama", "budget" : 9716 }
+{ "movie_name" : "Across the Universe", "movie_genre" : "Drama|Fantasy|Musical|Romance", "budget" : 13598 }
+{ "movie_name" : "Angry Video Game Nerd: The Movie", "movie_genre" : "Adventure|Comedy|Sci-Fi", "budget" : 12197 }
+{ "movie_name" : "Into the Storm", "movie_genre" : "Drama|War", "budget" : 11098 }
+{ "movie_name" : "Purge, The", "movie_genre" : "Crime|Horror|Thriller", "budget" : 9618 }
+{ "movie_name" : "Gumby: The Movie", "movie_genre" : "Animation|Children", "budget" : 12193 }
+{ "movie_name" : "Troop Beverly Hills", "movie_genre" : "Comedy", "budget" : 9525 }
+{ "movie_name" : "Boulevard", "movie_genre" : "Crime|Drama", "budget" : 11738 }
+{ "movie_name" : "Walker", "movie_genre" : "Adventure|Drama|War|Western", "budget" : 11355 }
+{ "movie_name" : "Home Alone 2: Lost in New York", "movie_genre" : "Children|Comedy", "budget" : 9973 }
+{ "movie_name" : "Presence, The", "movie_genre" : "Drama|Horror|Thriller", "budget" : 12419 }
+{ "movie_name" : "It's Such a Beautiful Day", "movie_genre" : "Animation|Comedy|Drama|Fantasy|Sci-Fi", "budget" : 12919 }
+{ "movie_name" : "633 Squadron", "movie_genre" : "Drama|War", "budget" : 12381 }
+{ "movie_name" : "Passion Fish", "movie_genre" : "Drama", "budget" : 11666 }
+{ "movie_name" : "Nazis: A Warning from History, The", "movie_genre" : "Documentary|War", "budget" : 11566 }
+{ "movie_name" : "Transit", "movie_genre" : "Crime|Drama|Thriller", "budget" : 10130 }
+{ "movie_name" : "No Way Back", "movie_genre" : "Action|Crime|Drama|Thriller", "budget" : 14503 }
+{ "movie_name" : "Who the F**K Is Arthur Fogel", "movie_genre" : "Documentary", "budget" : 13384 }
+Type "it" for more
+
+> db.users.find({$and : [{"production_year":{$gte : 2000}},{"budget":{$gte: 10000}}]},{"movie_name":1,"movie_genre":1,"_id":0,"budget":1,"production_year":1})
+{ "movie_name" : "Rum Diary, The", "movie_genre" : "Comedy|Drama|Thriller", "production_year" : 2019, "budget" : 19693 }
+{ "movie_name" : "Just Around the Corner", "movie_genre" : "Comedy|Musical", "production_year" : 2017, "budget" : 18555 }
+{ "movie_name" : "Across the Universe", "movie_genre" : "Drama|Fantasy|Musical|Romance", "production_year" : 2011, "budget" : 13598 }
+{ "movie_name" : "Angry Video Game Nerd: The Movie", "movie_genre" : "Adventure|Comedy|Sci-Fi", "production_year" : 2012, "budget" : 12197 }
+{ "movie_name" : "Knights of the Round Table", "movie_genre" : "Adventure|Drama", "production_year" : 2016, "budget" : 16573 }
+{ "movie_name" : "50 Worst Movies Ever Made, The", "movie_genre" : "Documentary", "production_year" : 2000, "budget" : 16160 }
+{ "movie_name" : "One Day", "movie_genre" : "Drama|Romance", "production_year" : 2008, "budget" : 17613 }
+{ "movie_name" : "Boulevard", "movie_genre" : "Crime|Drama", "production_year" : 2014, "budget" : 11738 }
+{ "movie_name" : "Crime Lords of Tokyo", "movie_genre" : "Documentary", "production_year" : 2009, "budget" : 16417 }
+{ "movie_name" : "Walker", "movie_genre" : "Adventure|Drama|War|Western", "production_year" : 2017, "budget" : 11355 }
+{ "movie_name" : "It Came from Outer Space", "movie_genre" : "Sci-Fi", "production_year" : 2011, "budget" : 17494 }
+{ "movie_name" : "Zatoichi in Desperation (Shin Zatôichi monogatari: Oreta tsue) (Zatôichi 24)", "movie_genre" : "Action|Adventure|Drama", "production_year" : 2016, "budget" : 18719 }
+{ "movie_name" : "It's Such a Beautiful Day", "movie_genre" : "Animation|Comedy|Drama|Fantasy|Sci-Fi", "production_year" : 2012, "budget" : 12919 }
+{ "movie_name" : "633 Squadron", "movie_genre" : "Drama|War", "production_year" : 2010, "budget" : 12381 }
+{ "movie_name" : "Passion Fish", "movie_genre" : "Drama", "production_year" : 2013, "budget" : 11666 }
+{ "movie_name" : "Nazis: A Warning from History, The", "movie_genre" : "Documentary|War", "production_year" : 2015, "budget" : 11566 }
+{ "movie_name" : "Transit", "movie_genre" : "Crime|Drama|Thriller", "production_year" : 2007, "budget" : 10130 }
+{ "movie_name" : "Triad Election (Election 2) (Hak se wui yi wo wai kwai)", "movie_genre" : "Crime|Drama|Thriller", "production_year" : 2017, "budget" : 17743 }
+{ "movie_name" : "Numb", "movie_genre" : "Comedy|Drama|Romance", "production_year" : 2017, "budget" : 14972 }
+{ "movie_name" : "Endless Love", "movie_genre" : "Drama|Romance", "production_year" : 2017, "budget" : 16608 }
+Type "it" for more
+
+> db.users.find({$nor : [{"production_year":{$gt: 2000}},{"budget":{$gt: 10000}}]},{"movie_name":1,"movie_genre":1,"_id":0,"budget":1,"production_year":1})
+{ "movie_name" : "Purge, The", "movie_genre" : "Crime|Horror|Thriller", "production_year" : 1998, "budget" : 9618 }
+{ "movie_name" : "Troop Beverly Hills", "movie_genre" : "Comedy", "production_year" : 1994, "budget" : 9525 }
+{ "movie_name" : "Target", "movie_genre" : "Action|Drama|Thriller", "production_year" : 2000, "budget" : 9725 }
+{ "movie_name" : "Asphalt Playground (La cité rose)", "movie_genre" : "Comedy", "production_year" : 1990, "budget" : 9963 }
+{ "movie_name" : "Abraham Lincoln", "movie_genre" : "Drama|War", "production_year" : 1992, "budget" : 9494 }
+{ "movie_name" : "Batch '81", "movie_genre" : "Drama", "production_year" : 1991, "budget" : 9423 }
+{ "movie_name" : "American Sniper", "movie_genre" : "Action|War", "production_year" : 1994, "budget" : 9850 }
+{ "movie_name" : "Passion of Love (Passione d'amore)", "movie_genre" : "Drama|Romance", "production_year" : 1992, "budget" : 9590 }
+{ "movie_name" : "Iron Eagle", "movie_genre" : "Action|War", "production_year" : 1997, "budget" : 9438 }
+{ "movie_name" : "Southern District (Zona Sur)", "movie_genre" : "Drama", "production_year" : 1998, "budget" : 9042 }
+{ "movie_name" : "Beautiful Losers", "movie_genre" : "Documentary", "production_year" : 1995, "budget" : 9755 }
+{ "movie_name" : "Barrier (Bariera)", "movie_genre" : "Comedy|Drama", "production_year" : 1994, "budget" : 9753 }
+{ "movie_name" : "I Hired a Contract Killer", "movie_genre" : "Comedy|Drama", "production_year" : 1998, "budget" : 9761 }
+{ "movie_name" : "Moontide", "movie_genre" : "Drama|Film-Noir", "production_year" : 1992, "budget" : 9344 }
+{ "movie_name" : "Shrine, The", "movie_genre" : "Horror", "production_year" : 1999, "budget" : 9689 }
+{ "movie_name" : "Mummy, The", "movie_genre" : "Horror", "production_year" : 1991, "budget" : 9884 }
+{ "movie_name" : "Porn Theater (Chatte à deux têtes, La)", "movie_genre" : "Drama", "production_year" : 1997, "budget" : 9158 }
+{ "movie_name" : "Blume in Love", "movie_genre" : "Comedy|Drama|Romance", "production_year" : 1991, "budget" : 9841 }
+{ "movie_name" : "Good, the Bad, the Weird, The (Joheunnom nabbeunnom isanghannom)", "movie_genre" : "Action|Adventure|Comedy|Western", "production_year" : 1995, "budget" : 9169 }  
+{ "movie_name" : "South, The (Lomalla)", "movie_genre" : "Drama|Thriller", "production_year" : 1993, "budget" : 9130 }
+Type "it" for more
+
+{ "movie_name" : "Of Human Bondage", "movie_genre" : "Drama", "production_year" : 1996, "budget" : 12908 }
+{ "movie_name" : "Rum Diary, The", "movie_genre" : "Comedy|Drama|Thriller", "production_year" : 2019, "budget" : 19693 }
+{ "movie_name" : "Just Around the Corner", "movie_genre" : "Comedy|Musical", "production_year" : 2017, "budget" : 18555 }
+{ "movie_name" : "Moebius Redux: A Life in Pictures", "movie_genre" : "Documentary", "production_year" : 1999, "budget" : 13029 }
+{ "movie_name" : "Night and the City", "movie_genre" : "Crime|Drama", "production_year" : 2013, "budget" : 9716 }
+{ "movie_name" : "Across the Universe", "movie_genre" : "Drama|Fantasy|Musical|Romance", "production_year" : 2011, "budget" : 13598 }
+{ "movie_name" : "Angry Video Game Nerd: The Movie", "movie_genre" : "Adventure|Comedy|Sci-Fi", "production_year" : 2012, "budget" : 12197 }
+{ "movie_name" : "Into the Storm", "movie_genre" : "Drama|War", "production_year" : 1998, "budget" : 11098 }
+{ "movie_name" : "Dragon Gate Inn (Dragon Inn) (Long men kezhan)", "movie_genre" : "Action|Adventure", "production_year" : 1998, "budget" : 15160 }
+{ "movie_name" : "2 Guns", "movie_genre" : "Action|Comedy|Crime", "production_year" : 1999, "budget" : 17642 }
+{ "movie_name" : "Olsen Gang on the Track, The (Olsen-banden på sporet)", "movie_genre" : "Comedy|Crime", "production_year" : 1997, "budget" : 16235 }
+{ "movie_name" : "Purge, The", "movie_genre" : "Crime|Horror|Thriller", "production_year" : 1998, "budget" : 9618 }
+{ "movie_name" : "Gumby: The Movie", "movie_genre" : "Animation|Children", "production_year" : 1996, "budget" : 12193 }
+{ "movie_name" : "Troop Beverly Hills", "movie_genre" : "Comedy", "production_year" : 1994, "budget" : 9525 }
+{ "movie_name" : "Knights of the Round Table", "movie_genre" : "Adventure|Drama", "production_year" : 2016, "budget" : 16573 }
+{ "movie_name" : "Highlander II: The Quickening", "movie_genre" : "Action|Sci-Fi", "production_year" : 1999, "budget" : 15248 }
+{ "movie_name" : "In Name Only", "movie_genre" : "Drama|Romance", "production_year" : 1992, "budget" : 17213 }
+{ "movie_name" : "One Day", "movie_genre" : "Drama|Romance", "production_year" : 2008, "budget" : 17613 }
+{ "movie_name" : "Death Becomes Her", "movie_genre" : "Comedy|Fantasy", "production_year" : 1999, "budget" : 19703 }
+{ "movie_name" : "Boulevard", "movie_genre" : "Crime|Drama", "production_year" : 2014, "budget" : 11738 }
+Type "it" for more
+
+> db.users.find({"production_year":{$in : [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010]}},{"movie_name":1,"movie_genre":1,"_id":0,"production_year":1})
+{ "movie_name" : "50 Worst Movies Ever Made, The", "movie_genre" : "Documentary", "production_year" : 2000 }
+{ "movie_name" : "One Day", "movie_genre" : "Drama|Romance", "production_year" : 2008 }
+{ "movie_name" : "Crime Lords of Tokyo", "movie_genre" : "Documentary", "production_year" : 2009 }
+{ "movie_name" : "633 Squadron", "movie_genre" : "Drama|War", "production_year" : 2010 }
+{ "movie_name" : "Transit", "movie_genre" : "Crime|Drama|Thriller", "production_year" : 2007 }
+{ "movie_name" : "Snake Eyes", "movie_genre" : "Action|Crime|Mystery|Thriller", "production_year" : 2000 }
+{ "movie_name" : "It's Alive III: Island of the Alive", "movie_genre" : "Comedy|Drama|Horror|Sci-Fi", "production_year" : 2006 }
+{ "movie_name" : "Phase IV", "movie_genre" : "Horror|Sci-Fi|Thriller", "production_year" : 2007 }
+{ "movie_name" : "Return of the Fly", "movie_genre" : "Horror|Sci-Fi", "production_year" : 2000 }
+{ "movie_name" : "Criminal Life of Archibaldo de la Cruz, The (Ensayo de un crimen)", "movie_genre" : "Comedy|Crime|Drama", "production_year" : 2007 }
+{ "movie_name" : "Oranges and Sunshine", "movie_genre" : "Drama", "production_year" : 2000 }
+{ "movie_name" : "Hallam Foe (Mister Foe)", "movie_genre" : "Drama|Romance", "production_year" : 2004 }
+{ "movie_name" : "Assault on Precinct 13", "movie_genre" : "Action|Thriller", "production_year" : 2007 }
+{ "movie_name" : "Spetters", "movie_genre" : "Comedy|Drama", "production_year" : 2010 }
+{ "movie_name" : "Village of the Damned", "movie_genre" : "Horror|Sci-Fi", "production_year" : 2003 }
+{ "movie_name" : "Camp Hell", "movie_genre" : "Thriller", "production_year" : 2001 }
+{ "movie_name" : "Dead Man Walking", "movie_genre" : "Crime|Drama", "production_year" : 2002 }
+{ "movie_name" : "New York Confidential", "movie_genre" : "Crime|Drama|Film-Noir", "production_year" : 2003 }
+{ "movie_name" : "Jason Becker: Not Dead Yet", "movie_genre" : "Documentary", "production_year" : 2006 }
+{ "movie_name" : "Target", "movie_genre" : "Action|Drama|Thriller", "production_year" : 2000 }
+Type "it" for more
+
+> db.users.find({}).sort({"production_year":-1},{"movie_name":-1}).pretty()
+{
+        "_id" : ObjectId("62283dbf586b8b7862028fc2"),
+        "id" : 47,
+        "movie_name" : "Promise, The (Versprechen, Das)",
+        "movie_genre" : "Drama|Romance",
+        "production_year" : 2020,
+        "budget" : 11732
+}
+{
+        "_id" : ObjectId("62283dbf586b8b786202904a"),
+        "id" : 183,
+        "movie_name" : "Grace Is Gone",
+        "movie_genre" : "Drama",
+        "production_year" : 2020,
+        "budget" : 13983
+}
+{
+        "_id" : ObjectId("62283dbf586b8b78620290e3"),
+        "id" : 336,
+        "movie_name" : "When in Rome",
+        "movie_genre" : "Comedy|Romance",
+        "production_year" : 2020,
+        "budget" : 16214
+}
+{
+        "_id" : ObjectId("62283dbf586b8b78620290e6"),
+        "id" : 339,
+        "movie_name" : "Walking Tall Part II",
+        "movie_genre" : "Action|Adventure|Crime|Drama",
+        "production_year" : 2020,
+        "budget" : 9544
+}
+{
+        "_id" : ObjectId("62283dbf586b8b78620290ec"),
+        "id" : 345,
+        "movie_name" : "Life of Oharu, The (Saikaku ichidai onna)",
+        "movie_genre" : "Drama",
+        "production_year" : 2020,
+        "budget" : 14890
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862029136"),
+        "id" : 419,
+        "movie_name" : "All Blossoms Again: Pedro Costa, Director (Tout refleurit: Pedro Costa, cinéaste)",
+        "movie_genre" : "Documentary",
+        "production_year" : 2020,
+        "budget" : 13479
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862029184"),
+        "id" : 497,
+        "movie_name" : "Bloodsucking Pharaohs in Pittsburgh",
+        "movie_genre" : "Comedy|Horror",
+        "production_year" : 2020,
+        "budget" : 16592
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862028f95"),
+        "id" : 2,
+        "movie_name" : "Rum Diary, The",
+        "movie_genre" : "Comedy|Drama|Thriller",
+        "production_year" : 2019,
+        "budget" : 19693
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862028fc4"),
+        "id" : 49,
+        "movie_name" : "Zero",
+        "movie_genre" : "Drama",
+        "production_year" : 2019,
+        "budget" : 11308
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862028fdb"),
+        "id" : 72,
+        "movie_name" : "Simon & the Oaks",
+        "movie_genre" : "Drama",
+        "production_year" : 2019,
+        "budget" : 11519
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862028fff"),
+        "id" : 108,
+        "movie_name" : "My Best Friend's Wedding",
+        "movie_genre" : "Comedy|Romance",
+        "production_year" : 2019,
+        "budget" : 11607
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862029016"),
+        "id" : 131,
+        "movie_name" : "Late Show, The",
+        "movie_genre" : "Comedy|Crime|Drama|Mystery",
+        "production_year" : 2019,
+        "budget" : 18015
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862029032"),
+        "id" : 159,
+        "movie_name" : "Spasmo",
+        "movie_genre" : "Mystery|Thriller",
+        "production_year" : 2019,
+        "budget" : 15626
+}
+{
+        "_id" : ObjectId("62283dbf586b8b786202904c"),
+        "id" : 185,
+        "movie_name" : "I Don't Want to Be a Man (Ich möchte kein Mann sein)",
+        "movie_genre" : "Comedy|Romance",
+        "production_year" : 2019,
+        "budget" : 11949
+}
+{
+        "_id" : ObjectId("62283dbf586b8b786202904d"),
+        "id" : 186,
+        "movie_name" : "Fort Bliss",
+        "movie_genre" : "Drama|War",
+        "production_year" : 2019,
+        "budget" : 12103
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862029064"),
+        "id" : 209,
+        "movie_name" : "Company: Original Cast Album",
+        "movie_genre" : "Documentary|Musical",
+        "production_year" : 2019,
+        "budget" : 14348
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862029073"),
+        "id" : 224,
+        "movie_name" : "Red Dawn",
+        "movie_genre" : "Action|War",
+        "production_year" : 2019,
+        "budget" : 14879
+}
+{
+        "_id" : ObjectId("62283dbf586b8b786202907f"),
+        "id" : 236,
+        "movie_name" : "Iron Man",
+        "movie_genre" : "Action|Adventure|Sci-Fi",
+        "production_year" : 2019,
+        "budget" : 15983
+}
+{
+        "_id" : ObjectId("62283dbf586b8b7862029082"),
+        "id" : 239,
+        "movie_name" : "The Kingdom of Dreams and Madness",
+        "movie_genre" : "Animation|Documentary",
+        "production_year" : 2019,
+        "budget" : 12905
+}
+{
+        "_id" : ObjectId("62283dbf586b8b786202908e"),
+        "id" : 251,
+        "movie_name" : "End of Summer, The (Early Autumn) (Kohayagawa-ke no aki)",
+        "movie_genre" : "Drama",
+        "production_year" : 2019,
+        "budget" : 9405
+}
+Type "it" for more
+
+> db.users.find({}).sort({"production_year":-1},{"movie_name":-1}).skip(10).limit(5)
+{ "_id" : ObjectId("62283dbf586b8b786202907f"), "id" : 236, "movie_name" : "Iron Man", "movie_genre" : "Action|Adventure|Sci-Fi", "production_year" : 2019, "budget" : 15983 }       
+{ "_id" : ObjectId("62283dbf586b8b7862028fff"), "id" : 108, "movie_name" : "My Best Friend's Wedding", "movie_genre" : "Comedy|Romance", "production_year" : 2019, "budget" : 11607 }
+{ "_id" : ObjectId("62283dbf586b8b7862028f95"), "id" : 2, "movie_name" : "Rum Diary, The", "movie_genre" : "Comedy|Drama|Thriller", "production_year" : 2019, "budget" : 19693 }     
+{ "_id" : ObjectId("62283dbf586b8b7862029032"), "id" : 159, "movie_name" : "Spasmo", "movie_genre" : "Mystery|Thriller", "production_year" : 2019, "budget" : 15626 }
+{ "_id" : ObjectId("62283dbf586b8b7862029016"), "id" : 131, "movie_name" : "Late Show, The", "movie_genre" : "Comedy|Crime|Drama|Mystery", "production_year" : 2019, "budget" : 18015 }
+
+
+
