@@ -5,15 +5,16 @@ const app = express();
 app.use(express.json());
 
 
-//  Connect ------ 
+//  Connect MongoDB database data to VSCode ------ 
 
 const connect = () => {
     mongoose.connect("mongodb://127.0.0.1:27017/books")
 }
 
 
-//  Create Schema -------
+//---------------------------------- Section Schema ----------------------------------------------------------//
 
+// Step 1: Creating the schema
 const sectionSchema = new mongoose.Schema(
     {
         sectionName: {
@@ -28,16 +29,20 @@ const sectionSchema = new mongoose.Schema(
     }
 );
 
+// Step 2: Creating the model
+
 const Section = mongoose.model("section", sectionSchema)
 
 //CRUD 
+
+//get
 
 app.get("/sections", async (req, res) => {
     try {
         const sections = await Section.find({}).lean().exec()
         return res.status(200).send({ Sections: sections });
     } catch (error) {
-        console.log(err);
+        console.log(error);
         return res.status(500).send("Please Check Your Network!");
     }
 
@@ -50,19 +55,29 @@ app.post("/sections", async (req, res) => {
         const section = await Section.create(req.body);
         return res.status(201).send(section);
     } catch (error) {
-        console.log(err);
-        return res.status(500).send({ error: err });
+        console.log(error);
+        return res.status(500).send({ error: error });
     }
 
 });
 
+//---------------------------------- Books Schema ----------------------------------------------------------//
 
+// Step 1: Creating the schema
 const bookSchema = new mongoose.Schema(
     {
         bookName: { type: String, require: true },
         bookBody: { type: String, require: true },
-        section_id: { type: mongoose.Schema.Types.ObjectId, ref: "section", required: true },
-        author_id : { type: mongoose.Schema.Types.ObjectId, ref: "author", required: true },
+        section_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "section",
+            required: true
+        },
+        author_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "author",
+            required: true
+        },
     },
     {
         versionKey: false,
@@ -70,31 +85,41 @@ const bookSchema = new mongoose.Schema(
     }
 );
 
+// Step 2: Creating the model
+
 const Book = mongoose.model("book", bookSchema)
+
+// CRUD
+
+//Get
 
 app.get("/books", async (req, res) => {
     try {
         const books = await Book.find({}).lean().exec()
         return res.status(200).send({ Books: books });
     } catch (error) {
-        console.log(err);
+        console.log(error);
         return res.status(500).send("Please Check Your Network!");
     }
 
 });
+
+//Post
 
 app.post("/books", async (req, res) => {
     try {
         const book = await Book.create(req.body);
         return res.status(201).send(book);
     } catch (error) {
-        console.log(err);
-        return res.status(500).send({ error: err });
+        console.log(error);
+        return res.status(500).send({ error: error });
     }
 
 });
 
+//---------------------------------- Author Schema ----------------------------------------------------------//
 
+// Step 1: Creating the schema
 const authorSchema = new mongoose.Schema(
     {
         first_name: {
@@ -112,7 +137,13 @@ const authorSchema = new mongoose.Schema(
     }
 );
 
+// Step 2: Creating the model
 const Author = mongoose.model("author", authorSchema)
+
+
+// CRUD 
+
+// Get
 
 app.get("/author", async (req, res) => {
     try {
@@ -125,17 +156,54 @@ app.get("/author", async (req, res) => {
 
 });
 
+// posting data to server
+
 app.post("/author", async (req, res) => {
     try {
         const author = await Author.create(req.body);
         return res.status(201).send(author);
     } catch (error) {
-        console.log(err);
-        return res.status(500).send({ error: err });
+        console.log(error);
+        return res.status(500).send({ error: error });
     }
 
 });
 
+//--------------------------------- Search Parts apis ----------------------------------------------
+
+
+//find all books written by an author
+
+app.get("/:authorId/books", async (req, res) => {
+    try {
+        const books = await Book.find({ author_id: req.params.authorId }).lean().exec();
+        return res.status(200).send(books);
+    } catch (error) {
+        return res.status(500).send({ error: error })
+    }
+})
+
+//find books in a section
+
+app.get("/books/:sectionId", async (req, res) => {
+    try {
+        const books = await Book.find({ section_id: req.params.sectionId }).lean().exec();
+        return res.status(200).send(books);
+    } catch (error) {
+        return res.status(500).send({ error: error })
+    }
+})
+
+//find books of 1 author inside a section Optional
+
+app.get("/books/:authorId/:sectionId", async (req, res) => {
+    try {
+        const books = await Book.find({ author_id: req.params.authorId, section_Id: req.params.sectionId }).lean().exec();
+        return res.status(200).send(books);
+    } catch (error) {
+        return res.status(500).send({ error: error })
+    }
+})
 
 app.listen(5000, async () => {
     try {
