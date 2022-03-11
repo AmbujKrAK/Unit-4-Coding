@@ -32,6 +32,7 @@ const sectionSchema = new mongoose.Schema(
 // Step 2: Creating the model
 
 const Section = mongoose.model("section", sectionSchema)
+//db.users
 
 //CRUD 
 
