@@ -130,7 +130,7 @@ const authorSchema = new mongoose.Schema(
         last_name: {
             type: String,
             require: true
-        }
+        },
     },
     {
         versionKey: false,
@@ -173,7 +173,7 @@ app.post("/author", async (req, res) => {
 //--------------------------------- Search Parts apis ----------------------------------------------
 
 
-//find all books written by an author
+//frind all books written by an author
 
 app.get("/:authorId/books", async (req, res) => {
     try {
