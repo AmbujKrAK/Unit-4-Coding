@@ -11,6 +11,7 @@ const connect = () => {
 
 app.listen(5000, async (req, res) => {
     try {
+        await connect();
         console.log("Connection Established");
         console.log("Listening to port 5000");
     } catch (error) {
@@ -61,6 +62,18 @@ app.get("/users", async (req,res)=> {
     }
 });
 
+// Post
+
+app.post("/users", async (req,res)=> {
+    try {
+        const user = await User.create(req.body)
+        return res.status(201).send(user)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
+
 
 // ------------------------------------ Branch Schema ---------------------------------//
 
@@ -70,7 +83,7 @@ const branchSchema = new mongoose.Schema(
         address: { type: String, require: true },
         IFSC : { type: String, require: true },
         MICR : { type: String, require: true },
-
+ 
     },
     {
         versionKey : false,
@@ -80,14 +93,26 @@ const branchSchema = new mongoose.Schema(
 
 const Branch = mongoose.model("branch",branchSchema);
 
-//Crud Operations - 
+// Crud Operations - 
 
-//Get
+// Get
 
 app.get("/branchs", async (req,res)=> {
     try {
         const branchs = await Branch.find({}).lean().exec()
         return res.status(200).send({branchs : branchs})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
+
+// Post
+
+app.post("/branchs", async (req,res)=> {
+    try {
+        const branch = await Branch.create(req.body)
+        return res.status(201).send(branch)
     } catch (error) {
         console.log(error);
         res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
@@ -131,6 +156,18 @@ app.get("/masters", async (req,res)=> {
     }
 });
 
+// Post
+
+app.post("/masters", async (req,res)=> {
+    try {
+        const master = await Master.create(req.body)
+        return res.status(201).send(master)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
+
 // ------------------------------------ Saving Account Schema ---------------------------------//
 
 const savingSchema = new mongoose.Schema(
@@ -160,6 +197,18 @@ app.get("/savings", async (req,res)=> {
     try {
         const savings = await Saving.find({}).lean().exec()
         return res.status(200).send({savings : savings})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
+
+// Post
+
+app.post("/savings", async (req,res)=> {
+    try {
+        const saving = await Saving.create(req.body)
+        return res.status(201).send(saving)
     } catch (error) {
         console.log(error);
         res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
@@ -204,3 +253,14 @@ app.get("/fixeds", async (req,res)=> {
     }
 });
 
+// Post
+
+app.post("/fixeds", async (req,res)=> {
+    try {
+        const fixed = await Fixed.create(req.body)
+        return res.status(201).send(fixed)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
