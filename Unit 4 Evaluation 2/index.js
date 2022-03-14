@@ -26,6 +26,16 @@ const userSchema = new mongoose.Schema(
         age : { type: Number, require: true },
         email : { type: String, require: true },
         address : { type: String, require: true },
+        savingAcctId : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "saving",
+            require : true,
+        },
+        FixedAcctId :{
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "fixed",
+            require : true,
+        },
 
     },
     {
@@ -60,6 +70,16 @@ const Branch = mongoose.model("branch",branchSchema);
 const masterSchema = new mongoose.Schema(
     {
         balance: { type: Number, require: true },
+        userId :  {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "user",
+            require : true,
+        },
+        branchId : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "branch",
+            require : true,
+        },
     },
     {
         versionKey : false,
@@ -76,6 +96,11 @@ const savingSchema = new mongoose.Schema(
         account_number : { type: Number, require: true, unique : true },
         balance  : { type: Number, require: true },
         interestRate : { type: Number, require: true },
+        branchId : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "branch",
+            require : true,
+        },
     },
     {
         versionKey : false,
@@ -94,7 +119,12 @@ const fixedSchema = new mongoose.Schema(
         balance  : { type: Number, require: true },
         interestRate : { type: Number, require: true },
         startDate : { type : String, require : true },
-        maturityDate : { type : String, require : true }
+        maturityDate : { type : String, require : true },
+        branchId : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "branch",
+            require : true,
+        },
     },
     {
         versionKey : false,
