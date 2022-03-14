@@ -1,3 +1,4 @@
+const { exec } = require("child_process");
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -46,6 +47,19 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.model("user",userSchema);
 
+//Crud Operations - 
+
+//Get
+
+app.get("/users", async (req,res)=> {
+    try {
+        const users = await User.find({}).lean().exec()
+        return res.status(200).send({users : users})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
 
 
 // ------------------------------------ Branch Schema ---------------------------------//
@@ -65,6 +79,20 @@ const branchSchema = new mongoose.Schema(
 );
 
 const Branch = mongoose.model("branch",branchSchema);
+
+//Crud Operations - 
+
+//Get
+
+app.get("/branchs", async (req,res)=> {
+    try {
+        const branchs = await Branch.find({}).lean().exec()
+        return res.status(200).send({branchs : branchs})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
 
 // ------------------------------------ Master Account Schema ---------------------------------//
 const masterSchema = new mongoose.Schema(
@@ -89,6 +117,20 @@ const masterSchema = new mongoose.Schema(
 
 const Master = mongoose.model("master",masterSchema);
 
+//Crud Operations - 
+
+//Get
+
+app.get("/masters", async (req,res)=> {
+    try {
+        const masters = await Master.find({}).lean().exec()
+        return res.status(200).send({masters : masters})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
+
 // ------------------------------------ Saving Account Schema ---------------------------------//
 
 const savingSchema = new mongoose.Schema(
@@ -109,6 +151,20 @@ const savingSchema = new mongoose.Schema(
 );
 
 const Saving = mongoose.model("saving",savingSchema);
+
+//Crud Operations - 
+
+//Get
+
+app.get("/savings", async (req,res)=> {
+    try {
+        const savings = await Saving.find({}).lean().exec()
+        return res.status(200).send({savings : savings})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
 
 
 // ------------------------------------ Fixed Account Schema ---------------------------------//
@@ -133,4 +189,18 @@ const fixedSchema = new mongoose.Schema(
 );
 
 const Fixed = mongoose.model("fixed",fixedSchema);
+
+//Crud Operations - 
+
+//Get
+
+app.get("/fixeds", async (req,res)=> {
+    try {
+        const fixeds = await Fixed.find({}).lean().exec()
+        return res.status(200).send({fixeds : fixeds})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
 
