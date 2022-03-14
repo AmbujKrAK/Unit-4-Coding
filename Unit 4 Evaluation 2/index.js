@@ -74,6 +74,16 @@ app.post("/users", async (req,res)=> {
     }
 });
 
+app.delete("/users/:id",async(req,res)=>{
+    try {
+        const user = await User.findByIdAndDelete(req.params.id)
+        return res.status(200).send(user)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+})
+
 
 // ------------------------------------ Branch Schema ---------------------------------//
 
