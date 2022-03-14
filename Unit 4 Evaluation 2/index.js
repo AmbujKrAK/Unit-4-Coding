@@ -75,7 +75,7 @@ app.post("/users", async (req,res)=> {
 });
 
 // Delete
- 
+
 app.delete("/users/:id",async(req,res)=>{
     try {
         const user = await User.findByIdAndDelete(req.params.id)
@@ -84,7 +84,7 @@ app.delete("/users/:id",async(req,res)=>{
         console.log(error);
         res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
     }
-})
+});
 
 
 // ------------------------------------ Branch Schema ---------------------------------//
@@ -271,6 +271,18 @@ app.post("/fixeds", async (req,res)=> {
     try {
         const fixed = await Fixed.create(req.body)
         return res.status(201).send(fixed)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
+    }
+});
+
+//Delete 
+
+app.delete("/fixeds/:id",async(req,res)=>{
+    try {
+        const fixed = await User.findByIdAndDelete(req.params.id)
+        return res.status(200).send(fixed)
     } catch (error) {
         console.log(error);
         res.status(500).send({Message: "Something Went Wrong, Please try again later!"})
