@@ -33,9 +33,9 @@ app.listen(5000, async () => {
 
 // fetch all students who gave a particular evaluation
 
-app.get("/:evaluationId" , async () =>{
+app.get("/evaluations/students/" , async () =>{
     try {
-        const students = await Student.find({evaluation_id: req.params.evaluationId}).lean().exec();
+        const students = await Evaluation.find({evaluation_id: req.params.evaluationId}).lean().exec();
         return res.status(200).send(students)
     } catch (error) {
         return res.status(500).send({ error: error });
