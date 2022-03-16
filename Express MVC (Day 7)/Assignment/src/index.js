@@ -20,7 +20,7 @@ app.use("/evaluations",evaluationsController)
 
 app.listen(5000, async () => {
     try {
-        await connect()
+        await connect();
         console.log("Connection Established")
         console.log("Listening to port 5000");
 
@@ -33,15 +33,15 @@ app.listen(5000, async () => {
 
 // fetch all students who gave a particular evaluation
 
-app.get("/evaluations/students/" , async () =>{
-    try {
-        const students = await Evaluation.find({evaluation_id: req.params.evaluationId}).lean().exec();
-        return res.status(200).send(students)
-    } catch (error) {
-        return res.status(500).send({ error: error });
-    }
-})
+// app.get("/evaluations/students/" , async () =>{
+//     try {
+//         const students = await Evaluation.find({evaluation_id: req.params.evaluationId}).lean().exec();
+//         return res.status(200).send(students)
+//     } catch (error) {
+//         return res.status(500).send({ error: error });
+//     }
+// })
 
 // // fetch the student with his personal details who scored the highest marks in the evaluation
 
-app.get("/students/:")
+// app.get("/students/:")

@@ -7,8 +7,13 @@ app.use(express.json());
 
 //  Connect MongoDB database data to VSCode ------ 
 
+var username = "Ambuj123";
+var pass = "Ambuj123";
+let database = "testing";
+
+
 const connect = () => {
-    mongoose.connect("mongodb://127.0.0.1:27017/books")
+    mongoose.connect(`mongodb+srv://${username}:${pass}@cluster0.xn7wc.mongodb.net/${database}?retryWrites=true&w=majority`)
 }
 
 
