@@ -12,6 +12,9 @@ const bookController = require("./controller/book.controller")
 const commentController = require("./controller/comment.controller")
 
 app.use("/user",userController)
+app.use("/books",userController)
+app.use("/comments",userController)
+app.use("/publications",userController)
 
 
 app.listen(5000, async(req,res)=>{
