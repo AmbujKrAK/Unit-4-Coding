@@ -7,6 +7,6 @@ app.listen(5000, async() => {
         console.log("Connection Establised!");
         console.log("Listening to Port 5000!");
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
     }
 });
