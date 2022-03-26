@@ -101,7 +101,8 @@ const Book = mongoose.model("book", bookSchema)
 
 app.get("/books", async (req, res) => {
     try {
-        const books = await Book.find({}).lean().exec()
+        const books = await Book.find({}).populate('section_id').populate('author_id')
+        .lean().exec()
         return res.status(200).send({ Books: books });
     } catch (error) {
         console.log(error);
