@@ -16,4 +16,4 @@ const batchSchema = new mongoose.Schema(
 
 const Batch = mongoose.model("batch", batchSchema);
 
-module.export = Batch;
+module.exports = Batch;

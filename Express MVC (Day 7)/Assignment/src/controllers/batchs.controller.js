@@ -1,5 +1,4 @@
 
-
 const express = require("express");
 const Batch = require("../models/batch.model.js")
 const app = express();
@@ -14,17 +13,17 @@ const crudController = require("./crud.controller.js");
 
 
 
-app.get("/batchs", async (req, res) => {
+app.get("", async (req, res) => {
     try {
         const batch = await Batch.find({}).lean().exec()
         return res.status(200).send({ batchs: batch });
     } catch (error) {
         console.log(error);
-        return res.status(500).send("Please Check Your Network!");
+        return res.status(500).send({message: error});
     }
 });
 
-app.post("",crudController.post(Batch));
+app.post("/",crudController.post(Batch));
 
 // app.post("/batchs", async (req, res) => {
 //     try {

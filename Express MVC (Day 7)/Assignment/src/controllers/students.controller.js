@@ -9,17 +9,19 @@ const app = express();
 
 
 
-app.get("/students", async (req, res) => {
+app.get("", async (req, res) => {
     try {
-        const student = await Student.find({}).lean().exec()
+        const student = await Student.find({})
+        .populate('userId')
+        .lean().exec()
         return res.status(200).send({ students: student });
     } catch (error) {
         console.log(error);
-        return res.status(500).send("Please Check Your Network!");
+        return res.status(500).send({message: error});
     }
 });
 
-app.post("",crudController.post(Student));
+app.post("/",crudController.post(Student));
 
 // app.post("/students", async (req, res) => {
 //     try {

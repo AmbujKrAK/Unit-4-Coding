@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const evaluationSchema = new mongoose.Schema(
     {
-        date_of_evaluation: { type: Number, required: true },
+        date_of_evaluation: { type: Date, required: true },
         instructor_id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "user",
@@ -14,11 +14,6 @@ const evaluationSchema = new mongoose.Schema(
             ref: "batch",
             required: true
         },
-        student_id:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref:"student",
-            required: true,
-        }
     },
     {
         versionKey: false,
@@ -29,4 +24,4 @@ const evaluationSchema = new mongoose.Schema(
 
 const Evaluation = mongoose.model("evaluation", evaluationSchema);
 
-module.export = Evaluation;
+module.exports = Evaluation;

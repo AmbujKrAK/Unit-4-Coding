@@ -4,4 +4,4 @@ const connect = () => {
     return mongoose.connect("mongodb://127.0.0.1:27017/Student");
 }
 
-module.export = connect;
+module.exports = connect;

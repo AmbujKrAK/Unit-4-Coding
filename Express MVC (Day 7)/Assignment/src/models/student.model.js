@@ -10,6 +10,10 @@ const studentSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
+        userId:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"user",required:true
+        },
     },
     {
         versionKey: false,
@@ -19,4 +23,4 @@ const studentSchema = new mongoose.Schema(
 
 const Student = mongoose.model("student", studentSchema);
 
-module.export = Student;
+module.exports = Student;
